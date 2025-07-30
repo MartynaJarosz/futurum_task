@@ -27,7 +27,27 @@
       "bid": "21.99",
       "fund": "1985",
       "status": true,
-      "town": "Warsaw",
+      "town": "Krakow",
+      "radius": "20"
+    },
+    {
+      "id": "4d6a",
+      "name": "bubu",
+      "keywords": "c",
+      "bid": "1",
+      "fund": "10",
+      "status": false,
+      "town": "Wroclaw",
+      "radius": "20"
+    },
+    {
+      "id": "27db",
+      "name": "c",
+      "keywords": "baba",
+      "bid": "1",
+      "fund": "11",
+      "status": true,
+      "town": "Poznan",
       "radius": "20"
     }
   ]
