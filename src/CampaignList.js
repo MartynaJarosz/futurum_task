@@ -4,7 +4,20 @@ import { Link } from "react-router-dom";
 
 export default function CampaignList(){
     const [campaignes,setCampaignes]=useState("");
-
+    const RemoveCampaign=(id)=>{
+        if(window.confirm("Are you sure you want to delete?")){
+            fetch("http://localhost:8000/campaign/"+id, {
+                method: 'DELETE'
+            })
+    .then((res)=>{
+        alert("Campaign removed successfully!");
+    })
+    .catch((err)=>console.log(err.message))
+    setTimeout(() => {
+        window.location.reload();
+    }, 100);       
+        }
+    }
     useEffect(()=>{
         fetch('http://localhost:8000/campaign')
         .then((res)=>res.json())
@@ -28,7 +41,7 @@ export default function CampaignList(){
 
                     <div>
                         <Link to={`/campaign/form/${c.id}`} className="btn btn-edit">Edit</Link>
-                        <a href="#" className="btn btn-delete">Delete</a>
+                        <button onClick={()=>{RemoveCampaign(c.id)}} className="btn btn-delete">Delete</button>
                     </div>
                 </div>
                 ))

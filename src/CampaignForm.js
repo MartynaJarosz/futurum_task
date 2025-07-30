@@ -44,7 +44,7 @@ export default function CreateCampaign(){
     })
     .then((res)=>{
         alert(campaignid ? "Campaign updated successfully!" : "Campaign created successfully!");
-        navigate(-1);
+        (campaignid ? navigate(-1) : navigate("/"));
     })
     .catch((err)=>console.log(err.message))
     setTimeout(() => {
