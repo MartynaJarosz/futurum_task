@@ -1,93 +1,29 @@
 {
   "campaign": [
     {
-      "id": "640e",
-      "name": "bomba",
-      "keywords": "v",
-      "bid": "22.07",
-      "fund": "200.11",
-      "status": true,
-      "town": "Krakow",
-      "radius": "20"
-    },
-    {
-      "id": "4d6a",
-      "name": "bubu",
-      "keywords": "c",
-      "bid": "1",
-      "fund": "10",
-      "status": false,
-      "town": "Wroclaw",
-      "radius": "20"
-    },
-    {
-      "id": "27db",
-      "name": "c",
-      "keywords": "baba",
-      "bid": "1",
-      "fund": "11",
-      "status": true,
-      "town": "Poznan",
-      "radius": "20"
-    },
-    {
-      "id": "2462",
-      "name": "dgfhjklkjhgfdfghjdflkj skldhgvsdl;s ;sfihoghlb;sfldgkb fkdjhjklj;ewkfdij fdhlsj;fdghvdl;k;fjgldhk djghlf;jsfhlv",
-      "keywords": "111",
-      "bid": "6520",
-      "fund": "10000",
-      "status": true,
-      "town": "Wroclaw",
-      "radius": "1"
-    },
-    {
-      "id": "2258",
-      "name": "11",
-      "keywords": "22",
+      "id": "e753",
+      "name": "vbn",
+      "keywords": [
+        "cheap",
+        "fast"
+      ],
       "bid": "22",
-      "fund": "21",
+      "fund": "200",
       "status": true,
       "town": "Krakow",
       "radius": "20"
     },
     {
-      "id": "8b30",
-      "name": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-      "keywords": "q1",
-      "bid": "11",
-      "fund": "1",
-      "status": true,
+      "id": "635a",
+      "name": "Martyna",
+      "keywords": [
+        "sale",
+        "fast"
+      ],
+      "bid": "4",
+      "fund": "19.98",
+      "status": false,
       "town": "Krakow",
-      "radius": "11"
-    },
-    {
-      "id": "e245",
-      "name": "vb",
-      "keywords": "a",
-      "bid": "0.01",
-      "fund": "10000",
-      "status": true,
-      "town": "Warsaw",
-      "radius": "1"
-    },
-    {
-      "id": "1e7e",
-      "name": "aaa",
-      "keywords": "a",
-      "bid": "1",
-      "fund": "22",
-      "status": true,
-      "town": "Wroclaw",
-      "radius": "20"
-    },
-    {
-      "id": "0bf4",
-      "name": "baba",
-      "keywords": "a",
-      "bid": "1",
-      "fund": "666",
-      "status": true,
-      "town": "Warsaw",
       "radius": "20"
     }
   ]

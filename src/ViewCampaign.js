@@ -16,12 +16,12 @@ export default function ViewCampaign(){
             <h1>Campaign Details</h1>
             { campaignes && <div className="details">
                 <p><strong>Name:</strong> {campaignes.name}</p>
-                <p><strong>Keywords:</strong> {campaignes.keywords}</p>
-                <p><strong>Bid Amount:</strong> {campaignes.bid}</p>
-                <p><strong>Campaign Fund:</strong> {campaignes.fund}</p>
+                <p><strong>Keywords:</strong> {campaignes.keywords && campaignes.keywords.join(', ')}</p>
+                <p><strong>Bid Amount:</strong> {campaignes.bid} zł</p>
+                <p><strong>Campaign Fund:</strong> {campaignes.fund} zł</p>
                 <p><strong>Status:</strong> {campaignes.status ? 'ON' : 'OFF'}</p>
                 <p><strong>Town:</strong> {campaignes.town}</p>
-                <p><strong>Radius:</strong> {campaignes.radius}</p>
+                <p><strong>Radius:</strong> {campaignes.radius} km</p>
             </div>}
             <div>
                 <Link to={`/campaign/form/${campaignes.id}`} className="btn btn-edit">Edit</Link>

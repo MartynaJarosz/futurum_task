@@ -6,7 +6,7 @@ export default function CreateCampaign(){
     const {campaignid} = useParams();
     const [formData, setFormData] = useState({
         name: '',
-        keywords: '',
+        keywords: [],
         bid: '',
         fund: '',
         status: true,
@@ -21,7 +21,10 @@ export default function CreateCampaign(){
         if (campaignid) {
             fetch(`http://localhost:8000/campaign/${campaignid}`)
             .then(res => res.json())
-            .then(data => setFormData(data))
+            .then(data => {
+                setFormData(data);
+                setSelectedKeywords(data.keywords || []);
+            })
             .catch(err => console.error("Fetch error:", err));
         }
     }, [campaignid]);
@@ -31,10 +34,39 @@ export default function CreateCampaign(){
     const newBalance = EMERALD_BALANCE - fundValue;
     const fundError = parseFloat(formData.fund) > EMERALD_BALANCE;
 
+    const keywords = ["sale", "cheap", "fast", "offer", "deal", "local"];
+    const [filteredKeywords, setFilteredKeywords] = useState([]);
+    const [inputValue, setInputValue] = useState("");
+    const [selectedKeywords, setSelectedKeywords] = useState([]);
+
     const handleChange=(e)=>{
         const {name, value, type, checked}=e.target;
         const val = type === 'checkbox' ? checked : value;
         setFormData(prev=>({...prev, [name]: val}));
+    };
+
+    const handleInputChange = (e) => {
+        const value = e.target.value;
+        setInputValue(value);
+        setFilteredKeywords(
+            keywords.filter(
+            (kw) => kw.toLowerCase().includes(value.toLowerCase()) && !selectedKeywords.includes(kw)
+            )
+        );
+    };
+
+    const handleKeywordSelect = (kw) => {
+        const updated = [...selectedKeywords, kw];
+        setSelectedKeywords(updated);
+        setInputValue("");
+        setFilteredKeywords([]);
+        setFormData(prev => ({ ...prev, keywords: updated }));
+    };
+
+    const handleKeywordRemove = (kwToRemove) => {
+        const updated = selectedKeywords.filter(kw => kw !== kwToRemove);
+        setSelectedKeywords(updated);
+        setFormData(prev => ({ ...prev, keywords: updated }));
     };
 
     const handleSubmit=(e)=>{
@@ -73,8 +105,31 @@ export default function CreateCampaign(){
                 {formData.name.length===0 && validation && <p className="errorMsg">Enter campaign name</p>}
                 
                 <label>Keywords:</label>
-                <input type="text" id="keywords" name="keywords" value={formData.keywords} required onChange={handleChange}/><br></br>
-                {formData.keywords.length===0 && validation && <p className="errorMsg">Enter keywords</p>}
+                <div className="autocomplete-wrapper">
+                    <div className="selected-keywords">
+                        {selectedKeywords.map((kw, idx) => (
+                            <span key={idx} className="keyword-tag">
+                                {kw}
+                                <button type="button" className="remove-tag-btn" onClick={() => handleKeywordRemove(kw)} aria-label={`Remove keyword ${kw}`}>
+                                    ×
+                                </button>
+                            </span>
+                            ))}
+                    </div>
+
+                    <input type="text" value={inputValue} onChange={handleInputChange} placeholder="Type to search..."/>
+
+                    {filteredKeywords.length > 0 && (
+                        <ul className="autocomplete-list">
+                        {filteredKeywords.map((suggestion, index) => (
+                            <li key={index} className="autocomplete-item" onClick={() => handleKeywordSelect(suggestion)}>
+                                {suggestion}
+                            </li>
+                        ))}
+                        </ul>
+                    )}
+                    {selectedKeywords.length === 0 && validation && (<p className="errorMsg">Enter keywords</p>)}
+                </div><br></br>
 
                 <label>Bid Amount (zł):</label>
                 <input type="number" id="bid" name="bid" step="0.01" min="0.01" value={formData.bid} required onChange={handleChange}/><br></br>
