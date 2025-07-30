@@ -24,7 +24,7 @@ export default function CampaignList(){
                 <div className="campaign-card" key={c.id}>
                     <p><strong>Name:</strong> {c.name}</p>
                     <p><strong>Keywords:</strong> {c.keywords}</p>
-                    <p><strong>Status:</strong> {c.status}</p>
+                    <p><strong>Status:</strong> {c.status ? 'ON' : 'OFF'}</p>
                     <p><strong>Town:</strong> {c.town}</p>
 
                     <div>
