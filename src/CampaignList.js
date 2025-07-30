@@ -34,10 +34,13 @@ export default function CampaignList(){
             
             {campaignes && campaignes.map((c)=> (
                 <div className="campaign-card" key={c.id}>
-                    <Link to={`/campaign/view/${c.id}`}>{c.name}</Link>
+                    <h3>{c.name}</h3>
                     <p><strong>Keywords:</strong> {c.keywords && c.keywords.join(', ')} </p>
                     <p><strong>Bid amount:</strong> {c.bid} zł</p>
                     <p><strong>Town:</strong> {c.town}</p>
+
+                    <Link to={`/campaign/view/${c.id}`} className='details-link'>View {c.name} details</Link>
+
 
                     <div>
                         <Link to={`/campaign/form/${c.id}`} className="btn btn-edit">Edit</Link>

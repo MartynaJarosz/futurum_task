@@ -19,10 +19,10 @@
 
 .campaign-card > a {
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   color: #0c7cd5;
   text-decoration: none;
-  margin-bottom: 0.5rem;
+  margin: 0.7rem 0;
 }
 
 .campaign-card > a:hover {

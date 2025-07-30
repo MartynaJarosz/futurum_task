@@ -1,19 +1,6 @@
 {
   "campaign": [
     {
-      "id": "e753",
-      "name": "vbn",
-      "keywords": [
-        "cheap",
-        "fast"
-      ],
-      "bid": "22",
-      "fund": "200",
-      "status": true,
-      "town": "Krakow",
-      "radius": "20"
-    },
-    {
       "id": "635a",
       "name": "Martyna",
       "keywords": [

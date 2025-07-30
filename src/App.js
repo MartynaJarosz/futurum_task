@@ -7,14 +7,12 @@ import ViewCampaign from './ViewCampaign';
 function App() {
   return (
     <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<CampaignList/>}></Route>
-      <Route path="/campaign/form" element={<CampaignForm/>}></Route>
-      <Route path="/campaign/form/:campaignid" element={<CampaignForm/>}></Route>
-      <Route path="/campaign/view/:campaignid" element={<ViewCampaign/>}></Route>
-
-
-    </Routes>
+      <Routes>
+        <Route path="/" element={<CampaignList/>}></Route>
+        <Route path="/campaign/form" element={<CampaignForm/>}></Route>
+        <Route path="/campaign/form/:campaignid" element={<CampaignForm/>}></Route>
+        <Route path="/campaign/view/:campaignid" element={<ViewCampaign/>}></Route>
+      </Routes>
     </BrowserRouter>
   );
 }
