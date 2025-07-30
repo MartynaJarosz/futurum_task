@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function CreateCampaign(){
-    const {campaignid} = useParams();
+    const {campaignId} = useParams();
+
     const [formData, setFormData] = useState({
         name: '',
         keywords: [],
@@ -18,8 +19,8 @@ export default function CreateCampaign(){
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (campaignid) {
-            fetch(`http://localhost:8000/campaign/${campaignid}`)
+        if (campaignId) {
+            fetch(`http://localhost:8000/campaign/${campaignId}`)
             .then(res => res.json())
             .then(data => {
                 setFormData(data);
@@ -27,7 +28,7 @@ export default function CreateCampaign(){
             })
             .catch(err => console.error("Fetch error:", err));
         }
-    }, [campaignid]);
+    }, [campaignId]);
 
     const EMERALD_BALANCE = 1000;
     const fundValue = parseFloat(formData.fund) || 0;
@@ -48,6 +49,7 @@ export default function CreateCampaign(){
     const handleInputChange = (e) => {
         const value = e.target.value;
         setInputValue(value);
+
         setFilteredKeywords(
             keywords.filter(
             (kw) => kw.toLowerCase().includes(value.toLowerCase()) && !selectedKeywords.includes(kw)
@@ -70,35 +72,36 @@ export default function CreateCampaign(){
     };
 
     const handleSubmit=(e)=>{
-
         e.preventDefault();
         const campaignData= formData;
-        const method = campaignid ? "PUT" : "POST";
+        const method = campaignId ? "PUT" : "POST";
 
         if (fundValue > EMERALD_BALANCE) {
             alert("Not enough funds.");
             return;
         }
 
-        fetch(`http://localhost:8000/campaign${campaignid ? `/${campaignid}` : ''}`, {
+        fetch(`http://localhost:8000/campaign${campaignId ? `/${campaignId}` : ''}`, {
             method,
             headers:{
                 "content-type":"application/json"
             },
             body: JSON.stringify(campaignData)
         })
-        .then((res)=>{
-            alert(campaignid ? "Campaign updated successfully!" : "Campaign created successfully!");
+        .then(()=>{
+            alert(campaignId ? "Campaign updated successfully!" : "Campaign created successfully!");
             navigate("/");
         })
         .catch((err)=>console.log(err.message))
+
         setTimeout(() => {
             window.location.reload();
         }, 100);
   }
     return(
         <div className="container">
-            <h1>{campaignid ? "Edit Campaign" : "Create Campaign"}</h1>
+            <h1>{campaignId ? "Edit Campaign" : "Create Campaign"}</h1>
+
             <form onSubmit={(arg) => handleSubmit(arg)}>
                 <label>Name:</label>
                 <input type="text" id="name" name="name" value={formData.name} required onChange={handleChange}/><br></br>
@@ -121,15 +124,15 @@ export default function CreateCampaign(){
 
                     {filteredKeywords.length > 0 && (
                         <ul className="autocomplete-list">
-                        {filteredKeywords.map((suggestion, index) => (
-                            <li key={index} className="autocomplete-item" onClick={() => handleKeywordSelect(suggestion)}>
-                                {suggestion}
-                            </li>
-                        ))}
+                            {filteredKeywords.map((suggestion, index) => (
+                                <li key={index} className="autocomplete-item" onClick={() => handleKeywordSelect(suggestion)}>
+                                    {suggestion}
+                                </li>
+                            ))}
                         </ul>
                     )}
-                    {selectedKeywords.length === 0 && validation && (<p className="errorMsg">Enter keywords</p>)}
                 </div><br></br>
+                {selectedKeywords.length === 0 && validation && (<p className="errorMsg">Enter keywords</p>)}
 
                 <label>Bid Amount (zł):</label>
                 <input type="number" id="bid" name="bid" step="0.01" min="0.01" value={formData.bid} required onChange={handleChange}/><br></br>

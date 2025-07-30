@@ -3,25 +3,26 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function CampaignList(){
-    const [campaignes,setCampaignes]=useState("");
-    const RemoveCampaign=(id)=>{
-        if(window.confirm("Are you sure you want to delete?")){
+    const [campaigns,setCampaigns]=useState("");
+
+    const removeCampaign=(id)=>{
+        if(window.confirm("Are you sure you want to delete?")) {
             fetch("http://localhost:8000/campaign/"+id, {
                 method: 'DELETE'
             })
-    .then((res)=>{
-        alert("Campaign removed successfully!");
-    })
-    .catch((err)=>console.log(err.message))
-    setTimeout(() => {
-        window.location.reload();
-    }, 100);       
+            .then(()=>alert("Campaign removed successfully!"))
+            .catch((err)=>console.log(err.message))
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 100);       
         }
     }
+
     useEffect(()=>{
         fetch('http://localhost:8000/campaign')
         .then((res)=>res.json())
-        .then((data)=>setCampaignes(data))
+        .then((data)=>setCampaigns(data))
         .catch((err)=>console.log(err.message))
     },[])
 
@@ -32,7 +33,7 @@ export default function CampaignList(){
             <div className="list-container">
                 <Link to="/campaign/form" className="btn btn-add">Add new Campaign</Link>
             
-            {campaignes && campaignes.map((c)=> (
+            {campaigns && campaigns.map((c)=> (
                 <div className="campaign-card" key={c.id}>
                     <h3>{c.name}</h3>
                     <p><strong>Keywords:</strong> {c.keywords && c.keywords.join(', ')} </p>
@@ -41,10 +42,9 @@ export default function CampaignList(){
 
                     <Link to={`/campaign/view/${c.id}`} className='details-link'>View {c.name} details</Link>
 
-
                     <div>
                         <Link to={`/campaign/form/${c.id}`} className="btn btn-edit">Edit</Link>
-                        <button onClick={()=>{RemoveCampaign(c.id)}} className="btn btn-delete">Delete</button>
+                        <button onClick={()=>{removeCampaign(c.id)}} className="btn btn-delete">Delete</button>
                     </div>
                 </div>
                 ))

@@ -1,8 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
-import CampaignList from './CampaignList';
-import CampaignForm from './CampaignForm';
-import ViewCampaign from './ViewCampaign';
+import CampaignList from './CampaignList/CampaignList';
+import CampaignForm from './CampaignForm/CampaignForm';
+import ViewCampaign from './ViewCampaign/ViewCampaign';
 
 function App() {
   return (
@@ -10,8 +9,8 @@ function App() {
       <Routes>
         <Route path="/" element={<CampaignList/>}></Route>
         <Route path="/campaign/form" element={<CampaignForm/>}></Route>
-        <Route path="/campaign/form/:campaignid" element={<CampaignForm/>}></Route>
-        <Route path="/campaign/view/:campaignid" element={<ViewCampaign/>}></Route>
+        <Route path="/campaign/form/:campaignId" element={<CampaignForm/>}></Route>
+        <Route path="/campaign/view/:campaignId" element={<ViewCampaign/>}></Route>
       </Routes>
     </BrowserRouter>
   );

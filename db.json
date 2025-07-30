@@ -1,17 +1,29 @@
 {
   "campaign": [
     {
-      "id": "635a",
-      "name": "Martyna",
+      "id": "223d",
+      "name": "Summer Shoe Sale",
       "keywords": [
         "sale",
-        "fast"
+        "deal"
       ],
-      "bid": "4",
-      "fund": "19.98",
-      "status": false,
-      "town": "Krakow",
-      "radius": "20"
+      "bid": "20.5",
+      "fund": "200",
+      "status": true,
+      "town": "Wroclaw",
+      "radius": "10"
+    },
+    {
+      "id": "8423",
+      "name": "Phone Case Promo",
+      "keywords": [
+        "cheap"
+      ],
+      "bid": "12",
+      "fund": "109.98",
+      "status": true,
+      "town": "Wroclaw",
+      "radius": "10"
     }
   ]
 }
