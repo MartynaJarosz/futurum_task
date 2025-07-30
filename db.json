@@ -9,6 +9,26 @@
       "status": false,
       "town": "Warsaw",
       "radius": "20"
+    },
+    {
+      "id": "4984",
+      "name": "mn,",
+      "keywords": "nl.",
+      "bid": "11",
+      "fund": "20",
+      "status": true,
+      "town": "Warsaw",
+      "radius": "33"
+    },
+    {
+      "id": "640e",
+      "name": "hvmb",
+      "keywords": "v",
+      "bid": "21.99",
+      "fund": "1985",
+      "status": true,
+      "town": "Warsaw",
+      "radius": "20"
     }
   ]
 }

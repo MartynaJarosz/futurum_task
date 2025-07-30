@@ -1,0 +1,101 @@
+.container {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #fdfdfd;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  color: #444;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fff;
+}
+
+.status-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.8rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border: none;
+}
+
+.btn-save {
+  background-color: #0c7cd5;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+  padding-top: 0.9rem;
+}
+
+.btn-save:hover {
+  background-color: #055fa8;
+}
+
+.btn-back {
+  background-color: #ccc;
+  color: #333;
+}
+
+.btn-back:hover {
+  background-color: #aaa;
+}
+
+/* Validation message */
+.errorMsg {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: -1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 500px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .btn {
+    width: 100%;
+    margin-top: 0.8rem;
+  }
+
+  .btn-back {
+    margin-left: 0;
+  }
+}

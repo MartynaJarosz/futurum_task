@@ -1,3 +1,4 @@
+import './CreateCampaign.css';
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -57,8 +58,10 @@ export default function CreateCampaign(){
                 {formData.fund.length===0 && validation && <p className="errorMsg">Enter campaign fund</p>}
 
                 <label>Status:</label>
-                <input type="checkbox" id="status" name="status" onChange={handleChange} checked={formData.status}/>{formData.status ? 'ON' : 'OFF'}<br></br>
-
+                <div className="status-toggle">
+                <input type="checkbox" id="status" name="status" onChange={handleChange} checked={formData.status}/>
+                <span>{formData.status ? 'ON' : 'OFF'}</span><br></br>
+                </div>
                 <label>Town:</label>
                 <select id="town" name="town" required onChange={handleChange}>
                     <option value="select">Select town</option>
