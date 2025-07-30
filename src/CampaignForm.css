@@ -75,12 +75,17 @@ select {
   background-color: #aaa;
 }
 
+.balance-info {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
 /* Validation message */
 .errorMsg {
   color: red;
   font-size: 0.9rem;
   margin-top: -1.2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 @media (max-width: 500px) {

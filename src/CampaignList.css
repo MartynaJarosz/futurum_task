@@ -5,36 +5,6 @@
   position: relative;
 }
 
-.btn {
-  padding: 0.4rem 1rem;
-  border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-  border: none;
-  transition: background-color 0.2s ease;
-  text-align: center;
-  font-size: 0.9rem;
-  user-select: none;
-  display: inline-block;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.btn-add {
-  background-color: #0c7cd5;
-  color: #fff;
-  font-weight: 600;
-  max-width: 220px;
-  margin: auto;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 8px rgba(12, 124, 213, 0.3);
-}
-
-.btn-add:hover {
-  background-color: #055fa8;
-  box-shadow: 0 6px 12px rgba(5, 95, 168, 0.6);
-}
-
 .campaign-card {
   background-color: #fdfdfd;
   border: 1px solid #ccc;
@@ -71,6 +41,36 @@
   right: 12px;
   display: flex;
   gap: 0.6rem;
+}
+
+.btn {
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease;
+  text-align: center;
+  font-size: 0.9rem;
+  user-select: none;
+  display: inline-block;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-add {
+  background-color: #0c7cd5;
+  color: #fff;
+  font-weight: 600;
+  max-width: 220px;
+  margin: auto;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 8px rgba(12, 124, 213, 0.3);
+}
+
+.btn-add:hover {
+  background-color: #055fa8;
+  box-shadow: 0 6px 12px rgba(5, 95, 168, 0.6);
 }
 
 .btn-edit {

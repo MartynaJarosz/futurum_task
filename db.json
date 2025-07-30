@@ -2,10 +2,10 @@
   "campaign": [
     {
       "id": "640e",
-      "name": "hvmb",
+      "name": "bomba",
       "keywords": "v",
-      "bid": "21.99",
-      "fund": "1985",
+      "bid": "22.07",
+      "fund": "200.11",
       "status": true,
       "town": "Krakow",
       "radius": "20"
@@ -59,6 +59,36 @@
       "status": true,
       "town": "Krakow",
       "radius": "11"
+    },
+    {
+      "id": "e245",
+      "name": "vb",
+      "keywords": "a",
+      "bid": "0.01",
+      "fund": "10000",
+      "status": true,
+      "town": "Warsaw",
+      "radius": "1"
+    },
+    {
+      "id": "1e7e",
+      "name": "aaa",
+      "keywords": "a",
+      "bid": "1",
+      "fund": "22",
+      "status": true,
+      "town": "Wroclaw",
+      "radius": "20"
+    },
+    {
+      "id": "0bf4",
+      "name": "baba",
+      "keywords": "a",
+      "bid": "1",
+      "fund": "666",
+      "status": true,
+      "town": "Warsaw",
+      "radius": "20"
     }
   ]
 }

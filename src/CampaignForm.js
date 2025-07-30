@@ -1,6 +1,6 @@
 import './CampaignForm.css';
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function CreateCampaign(){
     const {campaignid} = useParams();
@@ -13,48 +13,61 @@ export default function CreateCampaign(){
         town: '',
         radius: ''
     });
+
     const [validation, setValidation] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
-    if (campaignid) {
-      fetch(`http://localhost:8000/campaign/${campaignid}`)
-        .then(res => res.json())
-        .then(data => setFormData(data))
-        .catch(err => console.error("Fetch error:", err));
-    }
-  }, [campaignid]);
+        if (campaignid) {
+            fetch(`http://localhost:8000/campaign/${campaignid}`)
+            .then(res => res.json())
+            .then(data => setFormData(data))
+            .catch(err => console.error("Fetch error:", err));
+        }
+    }, [campaignid]);
+
+    const EMERALD_BALANCE = 1000;
+    const fundValue = parseFloat(formData.fund) || 0;
+    const newBalance = EMERALD_BALANCE - fundValue;
+    const fundError = parseFloat(formData.fund) > EMERALD_BALANCE;
 
     const handleChange=(e)=>{
         const {name, value, type, checked}=e.target;
         const val = type === 'checkbox' ? checked : value;
         setFormData(prev=>({...prev, [name]: val}));
-  };
-  const handleSubmit=(e)=>{
-    e.preventDefault();
-    const campaignData= formData;
-    const method = campaignid ? "PUT" : "POST";
+    };
 
-    fetch(`http://localhost:8000/campaign${campaignid ? `/${campaignid}` : ''}`, {
-        method,
-        headers:{
-            "content-type":"application/json"
-        },
-        body: JSON.stringify(campaignData)
-    })
-    .then((res)=>{
-        alert(campaignid ? "Campaign updated successfully!" : "Campaign created successfully!");
-        (campaignid ? navigate(-1) : navigate("/"));
-    })
-    .catch((err)=>console.log(err.message))
-    setTimeout(() => {
-        window.location.reload();
-    }, 100);
+    const handleSubmit=(e)=>{
+
+        e.preventDefault();
+        const campaignData= formData;
+        const method = campaignid ? "PUT" : "POST";
+
+        if (fundValue > EMERALD_BALANCE) {
+            alert("Not enough funds.");
+            return;
+        }
+
+        fetch(`http://localhost:8000/campaign${campaignid ? `/${campaignid}` : ''}`, {
+            method,
+            headers:{
+                "content-type":"application/json"
+            },
+            body: JSON.stringify(campaignData)
+        })
+        .then((res)=>{
+            alert(campaignid ? "Campaign updated successfully!" : "Campaign created successfully!");
+            navigate("/");
+        })
+        .catch((err)=>console.log(err.message))
+        setTimeout(() => {
+            window.location.reload();
+        }, 100);
   }
     return(
         <div className="container">
             <h1>{campaignid ? "Edit Campaign" : "Create Campaign"}</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(arg) => handleSubmit(arg)}>
                 <label>Name:</label>
                 <input type="text" id="name" name="name" value={formData.name} required onChange={handleChange}/><br></br>
                 {formData.name.length===0 && validation && <p className="errorMsg">Enter campaign name</p>}
@@ -68,8 +81,10 @@ export default function CreateCampaign(){
                 {formData.bid.length===0 && validation && <p className="errorMsg">Enter bid amount</p>}
 
                 <label>Campaign Fund (zł):</label>
-                <input type="number" id="fund" name="fund" min="1" value={formData.fund} required onChange={handleChange}/><br></br>
+                <input type="number" id="fund" name="fund" step="0.01" min="0.01" value={formData.fund} required onChange={handleChange}/>
+                <p className="balance-info">Current Emerald balance: <strong>{newBalance.toFixed(2)} zł</strong></p>
                 {formData.fund.length===0 && validation && <p className="errorMsg">Enter campaign fund</p>}
+                {fundError && <p className="errorMsg">Not enough funds.</p>}<br></br>
 
                 <label>Status:</label>
                 <div className="status-toggle">
@@ -93,7 +108,7 @@ export default function CreateCampaign(){
 
                 <div>
                     <button className="btn btn-save" onMouseDown={()=>setValidation(true)}>Save</button>
-                    <button className="btn btn-back" onClick={() => navigate(-1)}>Back</button>
+                    <button className="btn btn-back" type="button" onClick={() => navigate(-1)}>Back</button>
                 </div>
                 
             </form>
