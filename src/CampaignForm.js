@@ -33,8 +33,6 @@ export default function CreateCampaign(){
   const handleSubmit=(e)=>{
     e.preventDefault();
     const campaignData= formData;
-    console.log(campaignData);
-
     const method = campaignid ? "PUT" : "POST";
 
     fetch(`http://localhost:8000/campaign${campaignid ? `/${campaignid}` : ''}`, {
@@ -46,9 +44,9 @@ export default function CreateCampaign(){
     })
     .then((res)=>{
         alert(campaignid ? "Campaign updated successfully!" : "Campaign created successfully!");
+        navigate(-1);
     })
     .catch((err)=>console.log(err.message))
-    navigate("/");
     setTimeout(() => {
         window.location.reload();
     }, 100);
@@ -95,7 +93,7 @@ export default function CreateCampaign(){
 
                 <div>
                     <button className="btn btn-save" onMouseDown={()=>setValidation(true)}>Save</button>
-                    <Link to="/" className="btn btn-back">Back</Link>
+                    <button className="btn btn-back" onClick={() => navigate(-1)}>Back</button>
                 </div>
                 
             </form>

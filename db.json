@@ -1,16 +1,6 @@
 {
   "campaign": [
     {
-      "id": "898f",
-      "name": "camp1",
-      "keywords": "key1, key2",
-      "bid": "1",
-      "fund": "2000",
-      "status": false,
-      "town": "Warsaw",
-      "radius": "20"
-    },
-    {
       "id": "4984",
       "name": "mn,",
       "keywords": "nl.",

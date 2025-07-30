@@ -1,3 +1,4 @@
+import './CampaignList.css';
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -16,7 +17,7 @@ export default function CampaignList(){
             <h1>Campaign List</h1>
 
             <div className="list-container">
-                <Link to="/campaign/form" className="btn-add">Add new Campaign</Link>
+                <Link to="/campaign/form" className="btn btn-add">Add new Campaign</Link>
             
             {campaignes && campaignes.map((c)=> (
                 <div className="campaign-card" key={c.id}>

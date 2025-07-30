@@ -1,0 +1,59 @@
+.details {
+  background-color: #fdfdfd;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.8rem;
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.details p {
+  margin: 0.4rem 0;
+}
+
+.details strong {
+  color: #333;
+}
+
+.btn {
+  margin-right: 1rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease;
+  font-size: 0.9rem;
+  text-decoration: none;
+  user-select: none;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.btn-edit {
+  background-color: #f4a261;
+  color: #fff;
+}
+
+.btn-edit:hover {
+  background-color: #de7b2b;
+}
+
+.btn-back {
+  background-color: #ccc;
+  color: #333;
+}
+
+.btn-back:hover {
+  background-color: #aaa;
+}
+
+@media (max-width: 500px) {
+  .btn {
+    width: 100%;
+    margin-bottom: 0.7rem;
+  }
+}
